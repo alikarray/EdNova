@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: Nunito, "Segoe UI", system-ui, -apple-system, Tahoma, sans-serif;
+  --font-sans: Nunito, "Segoe UI", system-ui, -apple-system, Tahoma, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background: #fff; }
+.grid-pattern {
+  background-image: linear-gradient(rgba(255,255,255,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.18) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.coach-h { height: calc(100vh - 5rem); }
+@media (min-width: 768px) { .coach-h { height: 100vh; } }
+@media (prefers-reduced-motion: reduce) { * { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+/* ---- Dark theme: remap the slate/tint scales instead of touching every component ---- */
+html.dark { color-scheme: dark; }
+html.dark body { background: #0b1220; color: #e2e8f0; }
+html.dark {
+  --color-slate-50: #0f1829; --color-slate-100: #162133; --color-slate-200: #24324a; --color-slate-300: #34445f;
+  --color-slate-400: #7b8aa3; --color-slate-500: #94a3b8; --color-slate-600: #b6c2d3; --color-slate-700: #d3dbe6;
+  --color-slate-800: #e6ebf2; --color-slate-900: #f8fafc;
+  --color-blue-50: #12254a; --color-blue-100: #172e5c; --color-blue-200: #1e3a78; --color-blue-300: #2f5bb5;
+  --color-blue-700: #8fb8ff; --color-blue-900: #bcd4ff;
+  --color-green-50: #0f2a1f; --color-green-700: #6ee7a0; --color-green-800: #86efac; --color-green-900: #bbf7d0;
+  --color-red-50: #2e1518; --color-red-200: #7f2a30; --color-red-300: #9b3a40; --color-red-700: #fca5a5; --color-red-800: #fecaca;
+  --color-amber-50: #2e2410; --color-amber-100: #3a2d12; --color-amber-700: #fcd34d; --color-amber-800: #fde68a; --color-amber-900: #fef3c7;
+  --color-indigo-50: #1b1d45; --color-indigo-100: #25285c; --color-indigo-900: #c7d2fe;
+}
+html.dark .bg-white:not(.keep-white) { background-color: #121c2f; }
+html.dark .bg-slate-50\/60 { background-color: #0d1626; }
+html.dark .bg-gradient-to-b, html.dark .bg-gradient-to-br { --tw-gradient-from: #12254a; --tw-gradient-via: #0b1220; --tw-gradient-to: #0b1220; }
+html.dark .from-blue-50 { --tw-gradient-from: #12254a; }
+html.dark input, html.dark textarea, html.dark select { color: #e6ebf2; }
+html.dark select option { background: #121c2f; color: #e6ebf2; }
+html.dark .shadow-sm, html.dark .shadow-xl, html.dark .shadow-md { box-shadow: 0 1px 6px rgba(0,0,0,.45); }
+
+/* Nova mascot: gentle float + blink */
+@keyframes nova-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes nova-blink { 0%,92%,100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+.nova-float { animation: nova-float 3.6s ease-in-out infinite; }
+.nova-blink { transform-box: fill-box; transform-origin: center; animation: nova-blink 5s infinite; }
+
+/* Smooth page changes */
+@keyframes page-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.page-in { animation: page-in .28s ease-out both; }
