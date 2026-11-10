@@ -45,6 +45,21 @@ All AI calls go through `backend/gateway.py`:
 - **Large model slow or unavailable**: automatic fallback to the compact model, plus a 30 s circuit breaker so the next requests do not wait on a failing model. Degraded answers are never cached.
 - **Never a frozen screen**: AI requests are background jobs. The interface polls them and shows the stage, elapsed time and queue state; results say which model answered and whether it was a fallback.
 
+## Screenshots
+
+| | |
+|---|---|
+| ![Home](screenshots/01-home-dashboard.png) | ![Course folder](screenshots/02-course-folder.png) |
+| ![Study plan](screenshots/03-study-plan.png) | ![Quiz with timer](screenshots/04-quiz-timer.png) |
+| ![Arena](screenshots/05-arena-lobby.png) | ![Coach](screenshots/06-coach.png) |
+| ![Arabic RTL](screenshots/07-arabic-rtl-plan.png) | |
+
+(Screenshots were taken with the simulated AI, so the answer texts are placeholders.)
+
+## Technical explanation of the GenAI module
+
+See [docs/GENAI_MODULE.md](docs/GENAI_MODULE.md): request flow, model routing, RAG workflow, gateway and capacity handling, safety.
+
 ## Privacy and ethics
 
 Anonymous learners (random id in the browser). No names, photos, voices or addresses are collected;
